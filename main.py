@@ -39,6 +39,23 @@ def createFolder(groupFolderName):
     else:
         print "Folder already exists!"
 
+def batchFolders():
+    a = 1
+    sections = []
+    groups = raw_input("Number of groups: ")
+    groups = int(groups)
+    groups+=1
+    studyClass = raw_input("Enter Class")
+    while a!='0':
+        a = raw_input('Enter sections followed by enter(to finish 0): ')
+        if (a >='a' and a<='z') or (a>='A' and a<='Z'):
+            sections.append(a)
+        print "Section lists: ", sections
+    for section in sections:
+        for i in range(1,groups):
+            groupStr = str(i)
+            groupFolderName = assignClassAndSection(studyClass, section, groupStr)
+            createFolder(groupFolderName)
 
 def takeCommand():
     userCommand = raw_input("enter command>> ")
@@ -51,8 +68,12 @@ def takeCommand():
 print "Welcome to File Management (FileMan)"
 print "type h/help for help"
 
+batchFolders()
+
+"""
 studyClass = raw_input("Class: ")
 section = raw_input("Section: ")
 group = raw_input("Group: ")
 groupFolderName = assignClassAndSection(studyClass, section, group)
 createFolder(groupFolderName)
+"""
